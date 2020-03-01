@@ -18,7 +18,7 @@ class ArbitraryCommandLineToolConan(ConanFile):
       "url": "auto",
       "revision": "auto"
    }
-   name = "aclt"
+   name = "battleplan"
    version = getVersion()
    #license = "<Put the package license here>"
    #url = "<Package recipe repository url here, for issues about the package>"

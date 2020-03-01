@@ -3,7 +3,7 @@ include(${CMAKE_CURRENT_BINARY_DIR}/conanbuildinfo.cmake)
 
 cmake_minimum_required(VERSION 3.12)
 
-project(aclt VERSION ${CONAN_PACKAGE_VERSION}
+project(battleplan VERSION ${CONAN_PACKAGE_VERSION}
                   DESCRIPTION "Commandline tool for arbitrary environments"
                   LANGUAGES CXX)
 
@@ -22,30 +22,15 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${OUTPUT_DIR})
 set(CMAKE_CXX_STANDARD 17)
 
 #add the necessary targets
-
+ 
 set(Boost_USE_STATIC_LIBS TRUE)
 
 find_package(Boost COMPONENTS filesystem system REQUIRED)
 
 add_subdirectory(src)
 
-if(${BUILD_WITH_DEMO})
-	message(STATUS "Building with demo")
-	add_subdirectory(demo)
-
-else()
-	message(STATUS "Skipping demo")
-endif()
-
-if(${BUILD_WITH_TESTS})
-	message(STATUS "Building with tests")
-	add_subdirectory(tests)
-else()
-	message(STATUS "Skipping tests")
-endif()
 
 
-
-install(TARGETS aclt
-	DESTINATION bin
-)
+#install(TARGETS battleplan
+	#DESTINATION bin
+#)

@@ -1,5 +1,5 @@
 
-add_executable(aclt
+add_executable(battleplan
 	src/main.cpp
 )
 
