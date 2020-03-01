@@ -1,4 +1,4 @@
-add_subdirectory(aclt)
+add_subdirectory(battleplan)
 
 add_subdirectory(parser)
-add_subdirectory(dllloader)
+add_subdirectory(graphics)

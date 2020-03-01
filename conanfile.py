@@ -32,6 +32,10 @@ class ArbitraryCommandLineToolConan(ConanFile):
       if self.options.with_tests == True :
          self.build_requires("gtest/1.10.0@nerdhaus-mirror/stable")
       self.build_requires("boost/1.71.0@conan/stable")
+      self.build_requires( "sfml/2.5.1@bincrafters/stable")
+      self.options["sfml"].shared = True
+      self.options["sfml"].graphics = True
+      self.options["sfml"].window = True
 
    def build(self):
       cmake = CMake(self)
