@@ -5,6 +5,12 @@
 
 using namespace nhp::battleplan::parser;
 
+CommandParser::CommandParser()
+{
+	m_maxCommandLength = 0;
+	m_maxDescriptionLength = 0;
+	m_maxUsageLength = 0;
+}
 
 bool CommandParser::parse(const std::string& command)
 {
@@ -30,13 +36,14 @@ bool CommandParser::parse(const std::string& command)
 		{
 			printHelpLine(action.first, action.second);
 		}
+		return true;
 	}
-	throw std::runtime_error("unknown command");
+	throw std::runtime_error("Unknown command");
 }
 
 void CommandParser::setCommandAction(const std::string& command, CommandAction* action)
 {
-	if (m_actionDictionary.find(command) != m_actionDictionary.end())
+	if (m_actionDictionary.find(command) == m_actionDictionary.end())
 	{
 		m_actionDictionary[command] = action;
 		if (m_maxCommandLength < command.size())

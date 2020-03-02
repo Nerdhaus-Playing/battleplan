@@ -17,6 +17,7 @@ namespace nhp::battleplan::parser
 	class CommandParser
 	{
 	public:
+		CommandParser();
 		bool parse(const std::string& command);
 		void setCommandAction(const std::string& command, CommandAction* action);
 	private:
