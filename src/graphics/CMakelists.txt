@@ -1,0 +1,17 @@
+add_library(graphics
+	src/AddAction.cpp
+	src/ClearAction.cpp
+	src/ColorAction.cpp
+	src/LoadAction.cpp
+	src/ResetAction.cpp
+	src/SizeAction.cpp
+	src/Graphics.cpp
+)
+
+target_include_directories(
+	graphics PUBLIC
+	include
+)
+
+target_link_libraries(graphics PUBLIC
+ parser)
