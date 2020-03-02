@@ -5,7 +5,9 @@ add_library(graphics
 	src/LoadAction.cpp
 	src/ResetAction.cpp
 	src/SizeAction.cpp
+
 	src/Graphics.cpp
+	src/ActionFactory.cpp
 )
 
 target_include_directories(

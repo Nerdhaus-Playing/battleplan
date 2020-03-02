@@ -6,5 +6,6 @@ add_executable(battleplan
 
 target_link_libraries(battleplan PUBLIC
 	parser
+	graphics
 )
 

@@ -10,7 +10,7 @@ using namespace nhp::battleplan::graphics;
 bool ColorAction::handleSubcommand(const std::string& subcommand)
 {
 	std::cout << "Color of 0 Entities changed to " << subcommand << std::endl;
-	return false;
+	return true;
 }
 
 bool ColorAction::handleEmptyCall()
