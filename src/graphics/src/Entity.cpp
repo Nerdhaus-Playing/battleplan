@@ -1,0 +1,65 @@
+#include "Entity.h"
+
+using namespace nhp::battleplan::graphics;
+
+Entity::Entity(const std::string& identifier, EntityType type, const sf::Color& color, sf::Uint32 size)
+{
+	m_text.setString(identifier);
+	m_entityType = type;
+	setColor(color);
+	setSize(size);
+}
+
+void Entity::drag(const sf::Vector2f& amount)
+{
+	m_text.move(amount);
+	m_circle.move(amount);
+}
+
+void Entity::setColor(const sf::Color& color)
+{
+	m_circle.setFillColor(color);
+	if (color.r + color.g + color.b > 255 * 3 / 2)
+	{
+		m_text.setFillColor(sf::Color::Black);
+	}
+	else
+	{
+		m_text.setFillColor(sf::Color::White);
+	}
+}
+
+void Entity::setSize(sf::Uint32 size)
+{
+	m_circle.setRadius(size);
+}
+
+EntityType Entity::getEntityType() const
+{
+	return m_entityType;
+}
+
+std::string Entity::getIdentifier() const
+{
+	return m_text.getString();
+}
+
+bool Entity::contains(const sf::Vector2f& position)
+{
+	sf::Vector2f delta;
+	delta = m_circle.getPosition() - position;
+	if (m_circle.getRadius() * m_circle.getRadius() >= delta.x * delta.x + delta.y * delta.y)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+void Entity::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	target.draw(m_circle);
+	target.draw(m_text);
+}

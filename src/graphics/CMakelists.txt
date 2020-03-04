@@ -7,7 +7,9 @@ add_library(graphics
 	src/SizeAction.cpp
 
 	src/Graphics.cpp
+	src/GraphicsImpl.cpp
 	src/ActionFactory.cpp
+	src/Entity.cpp
 )
 
 target_include_directories(
