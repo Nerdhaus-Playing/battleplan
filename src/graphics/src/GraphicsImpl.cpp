@@ -1,6 +1,7 @@
 #include "GraphicsImpl.h"
 
 #include <stdexcept>
+#include <thread>
 
 using namespace nhp::battleplan::graphics;
 
@@ -98,6 +99,7 @@ void GraphicsImpl::loadBackground(const std::string& path)
 
 void GraphicsImpl::drawingLoop()
 {
+	std::this_thread::sleep_for(std::chrono::milliseconds(33));
 	m_window.clear();
 	for (auto& entity : m_entities)
 	{

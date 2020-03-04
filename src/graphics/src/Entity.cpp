@@ -1,11 +1,15 @@
 #include "Entity.h"
+#include <thread>
 
 using namespace nhp::battleplan::graphics;
 
 Entity::Entity(const std::string& identifier, EntityType type, const sf::Color& color, sf::Uint32 size)
 {
+	m_font = std::make_unique<sf::Font>();
+	m_font->loadFromFile("arial.ttf");
+	m_text = sf::Text(identifier, *m_font, 20);
+	m_text.move(-m_text.getGlobalBounds().width / 2, -m_text.getGlobalBounds().height/2);
 	m_circle.setOrigin(size, size);
-	m_text.setString(identifier);
 	m_entityType = type;
 	setColor(color);
 	setSize(size);
@@ -20,7 +24,7 @@ void Entity::drag(const sf::Vector2f& amount)
 void Entity::setColor(const sf::Color& color)
 {
 	m_circle.setFillColor(color);
-	if (color.r + color.g + color.b > 255 * 3 / 2)
+	if (color.r + color.g + color.b > 255/2)
 	{
 		m_text.setFillColor(sf::Color::Black);
 	}

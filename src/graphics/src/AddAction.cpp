@@ -14,8 +14,24 @@ AddAction::AddAction(Graphics* graphic)
 
 bool AddAction::handleSubcommand(const std::string& subcommand)
 {
-	std::cout << subcommand << std::endl;
-	m_graphic->addFriendEntity(subcommand);
+	auto position = subcommand.find(" ");
+	std::string identifier = subcommand.substr(position + 1);
+	if (subcommand.substr(0, position) == "friend")
+	{
+		m_graphic->addFriendEntity(identifier);
+	}
+	else if (subcommand.substr(0, position) == "enemy")
+	{
+		m_graphic->addEnemyEntity(identifier);
+	}
+	else if (subcommand.substr(0, position) == "neutral")
+	{
+		m_graphic->addNeutralEntity(identifier);
+	}
+	else
+	{
+		throw std::runtime_error("Unknown entity type " + subcommand.substr(position + 1));
+	}
 	return true;
 }
 
@@ -31,5 +47,5 @@ std::string AddAction::getDescription() const
 
 std::string AddAction::getUsage() const
 {
-	return "<identifier> [friend|enemy|neutral]";
+	return "[friend|enemy|neutral] <identifier>";
 }

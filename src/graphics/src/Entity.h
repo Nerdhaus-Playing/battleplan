@@ -3,6 +3,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 
+#include <memory>
+
 namespace nhp::battleplan::graphics
 {
 	enum class EntityType
@@ -30,6 +32,7 @@ namespace nhp::battleplan::graphics
 		sf::CircleShape m_circle;
 		EntityType m_entityType;
 		sf::Text m_text;
+		std::unique_ptr<sf::Font> m_font;
 
 	};
 
