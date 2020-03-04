@@ -5,8 +5,9 @@
 using namespace nhp::battleplan::graphics;
 
 GraphicsImpl::GraphicsImpl() :
-	m_window(sf::VideoMode(1024, 786, 32), "Test 32")
+	m_window(sf::VideoMode(1024, 786, 32), "Battleplan v1.0.0")
 {
+	m_draggedEntity = nullptr;
 }
 
 GraphicsImpl::~GraphicsImpl()
@@ -97,19 +98,54 @@ void GraphicsImpl::loadBackground(const std::string& path)
 
 void GraphicsImpl::drawingLoop()
 {
+	m_window.clear();
 	for (auto& entity : m_entities)
 	{
 		m_window.draw(entity.second);
 
 	}
+	m_window.display();
 
 	sf::Event e;
 	while (m_window.pollEvent(e))
 	{
-		if (e.type == sf::Event::Closed)
+		switch (e.type)
+		{
+		case sf::Event::Closed:
 			m_window.close();
+			break;
+		case sf::Event::MouseButtonPressed:
+			if (e.mouseButton.button == sf::Mouse::Left)
+			{
+				m_lastMousePosition = sf::Vector2f(e.mouseButton.x, e.mouseButton.y);
+				for (auto& entity : m_entities)
+				{
+					if (entity.second.contains(m_lastMousePosition))
+					{
+						m_draggedEntity = &entity.second;
+						break;
+					}
+				}
+			}
+			break;
+		case sf::Event::MouseButtonReleased:
+			if (e.mouseButton.button == sf::Mouse::Left)
+			{
+				m_draggedEntity = nullptr;
+			}
+			break;
+		case sf::Event::MouseMoved:
+			if (m_draggedEntity != nullptr)
+			{
+				sf::Vector2f currentPosition = sf::Vector2f(e.mouseMove.x, e.mouseMove.y);
+				m_draggedEntity->drag(currentPosition - m_lastMousePosition);
+				m_lastMousePosition = currentPosition;
+			}
+			break;
+		default:
+			break;
+		}
 	}
 
-	m_window.display();
 
 }

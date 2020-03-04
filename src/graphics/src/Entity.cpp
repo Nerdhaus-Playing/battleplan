@@ -4,6 +4,7 @@ using namespace nhp::battleplan::graphics;
 
 Entity::Entity(const std::string& identifier, EntityType type, const sf::Color& color, sf::Uint32 size)
 {
+	m_circle.setOrigin(size, size);
 	m_text.setString(identifier);
 	m_entityType = type;
 	setColor(color);
@@ -48,7 +49,8 @@ bool Entity::contains(const sf::Vector2f& position)
 {
 	sf::Vector2f delta;
 	delta = m_circle.getPosition() - position;
-	if (m_circle.getRadius() * m_circle.getRadius() >= delta.x * delta.x + delta.y * delta.y)
+	auto rSquare = m_circle.getRadius() * m_circle.getRadius();
+	if (rSquare >= delta.x * delta.x + delta.y * delta.y)
 	{
 		return true;
 	}

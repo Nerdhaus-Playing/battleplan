@@ -42,6 +42,11 @@ int main(int argc, char** argv)
 
 	graphics::Graphics m_graphics;
 
+	m_graphics.setEntitySize(30);
+	m_graphics.setEnemyColor(sf::Color::Red);
+	m_graphics.setFriendColor(sf::Color::Green);
+	m_graphics.setNeutralColor(sf::Color::Magenta);
+
 	auto graphicsActions = graphics::ActionFactory::CreateAndBindActions(g_parser, &m_graphics);
 
 	g_running = true;

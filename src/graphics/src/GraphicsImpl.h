@@ -37,5 +37,8 @@ namespace nhp::battleplan::graphics
 		sf::RenderWindow m_window;
 		sf::Texture m_backgroundTexture;
 		sf::Sprite m_backgroundSprite;
+
+		Entity* m_draggedEntity;
+		sf::Vector2f m_lastMousePosition;
 	};
 }

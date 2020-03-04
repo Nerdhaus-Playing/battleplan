@@ -15,6 +15,7 @@ AddAction::AddAction(Graphics* graphic)
 bool AddAction::handleSubcommand(const std::string& subcommand)
 {
 	std::cout << subcommand << std::endl;
+	m_graphic->addFriendEntity(subcommand);
 	return true;
 }
 
