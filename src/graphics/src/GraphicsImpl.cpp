@@ -6,7 +6,7 @@
 using namespace nhp::battleplan::graphics;
 
 GraphicsImpl::GraphicsImpl() :
-	m_window(sf::VideoMode(1024, 786, 32), "Battleplan v1.0.0")
+	m_window(sf::VideoMode(1920, 1080, 32), "Battleplan v1.0.0")
 {
 	m_draggedEntity = nullptr;
 }
@@ -89,18 +89,25 @@ void GraphicsImpl::deleteAllEntities()
 
 void GraphicsImpl::clearBackground(sf::Color color)
 {
-
+	m_backgroundColor = color;
+	m_backgroundTexture.reset();
+	m_backgroundSprite.reset();
 }
 
 void GraphicsImpl::loadBackground(const std::string& path)
 {
-
+	m_backgroundTexture = std::make_unique<sf::Texture>();
+	m_backgroundSprite = std::make_unique<sf::Sprite>();
+	m_backgroundTexture->loadFromFile(path);
+	m_backgroundSprite->setTexture(*m_backgroundTexture);
 }
 
 void GraphicsImpl::drawingLoop()
 {
 	std::this_thread::sleep_for(std::chrono::milliseconds(33));
-	m_window.clear();
+	m_window.clear(m_backgroundColor);
+	if(m_backgroundSprite)
+		m_window.draw(*m_backgroundSprite);
 	for (auto& entity : m_entities)
 	{
 		m_window.draw(entity.second);

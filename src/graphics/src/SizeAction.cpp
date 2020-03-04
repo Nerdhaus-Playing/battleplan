@@ -15,7 +15,7 @@ SizeAction::SizeAction(Graphics* graphic)
 
 bool SizeAction::handleSubcommand(const std::string& subcommand)
 {
-	std::cout << "0 Entities resized to " << subcommand << std::endl;
+	m_graphic->setEntitySize(std::atoi(subcommand.c_str()));
 	return true;
 }
 

@@ -19,7 +19,7 @@ bool ResetAction::handleSubcommand(const std::string& subcommand)
 
 bool ResetAction::handleEmptyCall()
 {
-	std::cout << "Deleted 0 entities" << std::endl;
+	m_graphic->deleteAllEntities();
 	return true;
 }
 

@@ -18,12 +18,13 @@ bool ClearAction::handleSubcommand(const std::string& subcommand)
 
 bool ClearAction::handleEmptyCall()
 {
+	m_graphic->clearBackground(sf::Color::Black);
 	return true;
 }
 
 std::string ClearAction::getDescription() const
 {
-	return "Sets the background to white";
+	return "Sets the background to black";
 }
 
 std::string ClearAction::getUsage() const

@@ -35,8 +35,9 @@ namespace nhp::battleplan::graphics
 		sf::Uint32 m_currentSize;
 
 		sf::RenderWindow m_window;
-		sf::Texture m_backgroundTexture;
-		sf::Sprite m_backgroundSprite;
+		std::unique_ptr<sf::Texture> m_backgroundTexture;
+		std::unique_ptr<sf::Sprite> m_backgroundSprite;
+		sf::Color m_backgroundColor;
 
 		Entity* m_draggedEntity;
 		sf::Vector2f m_lastMousePosition;

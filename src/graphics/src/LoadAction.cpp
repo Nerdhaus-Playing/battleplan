@@ -15,7 +15,7 @@ LoadAction::LoadAction(Graphics* graphic)
 
 bool LoadAction::handleSubcommand(const std::string& subcommand)
 {
-	std::cout << "Loaded file from " << subcommand << std::endl;
+	m_graphic->loadBackground(subcommand);
 	return true;
 }
 
