@@ -30,6 +30,7 @@ namespace nhp::battleplan::graphics
 		void clearBackground(sf::Color color);
 		void loadBackground(const std::string& path);
 
+		void drawingLoop();
 	private:
 		std::unique_ptr<GraphicsImpl> m_impl;
 	};

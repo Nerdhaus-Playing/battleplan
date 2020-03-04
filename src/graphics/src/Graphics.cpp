@@ -65,3 +65,8 @@ void Graphics::loadBackground(const std::string& path)
 {
 	m_impl->loadBackground(path);
 }
+
+void Graphics::drawingLoop()
+{
+	m_impl->drawingLoop();
+}
