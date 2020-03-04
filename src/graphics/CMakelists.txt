@@ -16,4 +16,8 @@ target_include_directories(
 )
 
 target_link_libraries(graphics PUBLIC
- parser)
+ parser
+ sfml-graphics
+ sfml-window
+ sfml-system
+ )
