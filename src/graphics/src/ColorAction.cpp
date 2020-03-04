@@ -7,6 +7,11 @@
 
 using namespace nhp::battleplan::graphics;
 
+ColorAction::ColorAction(Graphics* graphic)
+{
+	m_graphic = graphic;
+}
+
 bool ColorAction::handleSubcommand(const std::string& subcommand)
 {
 	std::cout << "Color of 0 Entities changed to " << subcommand << std::endl;

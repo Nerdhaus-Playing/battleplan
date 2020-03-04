@@ -7,6 +7,12 @@
 
 using namespace nhp::battleplan::graphics;
 
+
+LoadAction::LoadAction(Graphics* graphic)
+{
+	m_graphic = graphic;
+}
+
 bool LoadAction::handleSubcommand(const std::string& subcommand)
 {
 	std::cout << "Loaded file from " << subcommand << std::endl;

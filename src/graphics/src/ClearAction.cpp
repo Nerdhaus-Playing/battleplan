@@ -6,6 +6,11 @@
 
 using namespace nhp::battleplan::graphics;
 
+ClearAction::ClearAction(Graphics* graphic)
+{
+	m_graphic = graphic;
+}
+
 bool ClearAction::handleSubcommand(const std::string& subcommand)
 {
 	throw std::runtime_error(NOT_CALLABLE_WITH_ARGS);

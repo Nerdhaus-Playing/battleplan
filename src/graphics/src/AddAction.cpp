@@ -7,6 +7,11 @@
 
 using namespace nhp::battleplan::graphics;
 
+AddAction::AddAction(Graphics* graphic)
+{
+	m_graphic = graphic;
+}
+
 bool AddAction::handleSubcommand(const std::string& subcommand)
 {
 	std::cout << subcommand << std::endl;

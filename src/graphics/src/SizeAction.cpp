@@ -8,6 +8,11 @@
 
 using namespace nhp::battleplan::graphics;
 
+SizeAction::SizeAction(Graphics* graphic)
+{
+	m_graphic = graphic;
+}
+
 bool SizeAction::handleSubcommand(const std::string& subcommand)
 {
 	std::cout << "0 Entities resized to " << subcommand << std::endl;
