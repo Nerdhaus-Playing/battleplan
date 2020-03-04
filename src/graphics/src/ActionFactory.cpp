@@ -11,7 +11,7 @@
 using namespace nhp::battleplan;
 using namespace nhp::battleplan::graphics;
 
-std::vector<std::unique_ptr<parser::CommandAction>> graphics::ActionFactory::CreateAndBindActions(nhp::battleplan::parser::CommandParser& parser)
+std::vector<std::unique_ptr<parser::CommandAction>> graphics::ActionFactory::CreateAndBindActions(nhp::battleplan::parser::CommandParser& parser, Graphics* graphics)
 {
 	std::vector<std::unique_ptr<parser::CommandAction>> resultVector;
 

@@ -1,7 +1,9 @@
 #include "ExitAction.h"
 
 #include "parser/commandparser.h"
+
 #include "graphics/ActionFactory.h"
+#include "graphics/Graphics.h"
 
 #include <iostream>
 #include <string>
@@ -15,7 +17,9 @@ int main(int argc, char** argv)
 	ExitAction exitAction;
 	parser.setCommandAction("exit", &exitAction);
 
-	auto graphicsActions = graphics::ActionFactory::CreateAndBindActions(parser);
+	graphics::Graphics graphics;
+
+	auto graphicsActions = graphics::ActionFactory::CreateAndBindActions(parser, &graphics);
 
 
 	std::cout << "Commandline ready" << std::endl;

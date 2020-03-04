@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Graphics.h"
+
 #include "parser/commandparser.h"
 
 #include <vector>
@@ -10,6 +12,6 @@ namespace nhp::battleplan::graphics
 	class ActionFactory
 	{
 	public:
-		static std::vector<std::unique_ptr<parser::CommandAction>> CreateAndBindActions(nhp::battleplan::parser::CommandParser& parser);
+		static std::vector<std::unique_ptr<parser::CommandAction>> CreateAndBindActions(nhp::battleplan::parser::CommandParser& parser, Graphics* graphics);
 	};
 }
